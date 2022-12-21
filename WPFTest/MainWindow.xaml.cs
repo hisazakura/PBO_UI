@@ -28,12 +28,30 @@ namespace WPFTest
             InitializeComponent();
             TodoGrid.Items.Clear();
             TodoGrid.ItemsSource = TodoItems;
+            titleTextBox.Text = "\x00a0" + "Title";
+            titleTextBox.Foreground = SystemColors.GrayTextBrush;
+            descriptionTextBox.Text = "\x00a0" + "Description";
+            descriptionTextBox.Foreground = SystemColors.GrayTextBrush;
         }
 
         private void addButton_Click(object sender, RoutedEventArgs e)
         {
-            if (deadlineTime.Value == null) return;
-            Todo todo = new Todo(titleTextBox.Text, deadlineTime.Value ?? DateTime.Now, descriptionTextBox.Text);
+            if (deadlineDate.SelectedDate == null) return;
+            if (titleTextBox.Text == "\x00a0" + "Title") return;
+            if (descriptionTextBox.Text == "\x00a0" + "Description") return;
+            DateTime date = deadlineDate.SelectedDate?? DateTime.Today;
+            TimeSpan time;
+            try
+            {
+                time = ConvertToTime(timeTextBox.Text);
+            }
+            catch (ArgumentException)
+            {
+                return;
+            }
+            DateTime deadline = date + time;
+
+            Todo todo = new Todo(titleTextBox.Text, deadline, descriptionTextBox.Text);
             TodoItems.Add(todo);
             titleTextBox.Text = "";
             deadlineTime.Value = null;
@@ -83,6 +101,86 @@ namespace WPFTest
                         break;
                 }
             }
+        }
+
+        private void titleTextBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            string hint = "\x00a0" + "Title";
+            if (titleTextBox.Text == "")
+            {
+                titleTextBox.Foreground = SystemColors.GrayTextBrush;
+                titleTextBox.Text = hint;
+            }
+        }
+
+        private void titleTextBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            string hint = "\x00a0" + "Title";
+
+            if (titleTextBox.Text == hint)
+            {
+                titleTextBox.Foreground = SystemColors.ActiveCaptionTextBrush;
+                titleTextBox.Text = "";
+            }
+        }
+
+        private void descriptionTextBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            string hint = "\x00a0" + "Description";
+
+            if (descriptionTextBox.Text == hint)
+            {
+                descriptionTextBox.Foreground = SystemColors.ActiveCaptionTextBrush;
+                descriptionTextBox.Text = "";
+            }
+        }
+
+        private void descriptionTextBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            string hint = "\x00a0" + "Description";
+            if (descriptionTextBox.Text == "")
+            {
+                descriptionTextBox.Foreground = SystemColors.GrayTextBrush;
+                descriptionTextBox.Text = hint;
+            }
+        }
+
+        private void timeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            timeTextBox.Text = (e.AddedItems[0] as ComboBoxItem).Content as string;
+        }
+
+        private TimeSpan ConvertToTime(string timeString)
+        {
+            char[] timeLetters = timeString.ToArray();
+            if (timeLetters[2].Equals(":"))
+            {
+                throw new ArgumentException("Invalid Time-Formatted String");
+            }
+            if (timeString.Length != 5)
+            {
+                throw new ArgumentException("Invalid Time-Formatted String");
+            }
+
+            char[] hourChar = { timeLetters[0], timeLetters[1] };
+            string hourString = new string(hourChar);
+            int hour;
+            bool isValid = int.TryParse(hourString, out hour);
+            if (!isValid || hour > 24)
+            {
+                throw new ArgumentException("Invalid Time-Formatted String");
+            }
+
+            char[] minuteChar = { timeLetters[3], timeLetters[4] };
+            string minuteString = new string(minuteChar);
+            int minute;
+            isValid = int.TryParse(minuteString, out minute);
+            if (!isValid || minute > 60)
+            {
+                throw new ArgumentException("Invalid Time-Formatted String");
+            }
+
+            return new TimeSpan(hour, minute, 0);
         }
     }
 }
