@@ -14,6 +14,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Collections.ObjectModel;
+using System.Windows.Controls.Primitives;
+using System.Security.Cryptography;
 
 namespace WPFTest
 {
@@ -28,10 +30,20 @@ namespace WPFTest
             InitializeComponent();
             TodoGrid.Items.Clear();
             TodoGrid.ItemsSource = TodoItems;
+            ResetInput();
+        }
+
+        private void ResetInput()
+        {
             titleTextBox.Text = "\x00a0" + "Title";
             titleTextBox.Foreground = SystemColors.GrayTextBrush;
             descriptionTextBox.Text = "\x00a0" + "Description";
             descriptionTextBox.Foreground = SystemColors.GrayTextBrush;
+            deadlineDate.SelectedDate = null;
+            deadlineDate.Foreground = SystemColors.GrayTextBrush;
+            timeComboBox.SelectedIndex = -1;
+            timeTextBox.Text = "\x00a0" + "Select a time";
+            timeTextBox.Foreground = SystemColors.GrayTextBrush;
         }
 
         private void addButton_Click(object sender, RoutedEventArgs e)
@@ -53,9 +65,7 @@ namespace WPFTest
 
             Todo todo = new Todo(titleTextBox.Text, deadline, descriptionTextBox.Text);
             TodoItems.Add(todo);
-            titleTextBox.Text = "";
-            deadlineTime.Value = null;
-            descriptionTextBox.Text = "";
+            ResetInput();
 
         }
 
@@ -90,10 +100,24 @@ namespace WPFTest
             DataGrid grid = (DataGrid)sender;
             foreach (var item in grid.Columns)
             {
+                item.HeaderStyle = new Style(typeof(DataGridColumnHeader));
+                item.HeaderStyle.Setters.Add(new Setter(DataGridColumnHeader.HorizontalContentAlignmentProperty, HorizontalAlignment.Center));
+                item.HeaderStyle.Setters.Add(new Setter(DataGridColumnHeader.BackgroundProperty, new SolidColorBrush(Color.FromRgb(255, 185, 0))));
+                item.HeaderStyle.Setters.Add(new Setter(DataGridColumnHeader.ForegroundProperty, new SolidColorBrush(Color.FromRgb(0, 53, 102))));
+                item.CellStyle.Setters.Add(new Setter(DataGridCell.BackgroundProperty, new SolidColorBrush(Color.FromRgb(0, 53, 102))));
+                item.CellStyle.Setters.Add(new Setter(DataGridCell.BorderThicknessProperty, new Thickness(0,0,0,0)));
+
                 switch (item.Header.ToString())
                 {
+                    case "Title":
+                        item.MinWidth = 170;
+                        break;
+                    case "Deadline":
+                        item.MinWidth = 155;
+                        break;
                     case "Remove":
                         item.DisplayIndex = grid.Columns.Count - 1;
+                        item.MinWidth = 80;
                         break;
                     case "Completed":
                         item.Header = "";
@@ -119,7 +143,7 @@ namespace WPFTest
 
             if (titleTextBox.Text == hint)
             {
-                titleTextBox.Foreground = SystemColors.ActiveCaptionTextBrush;
+                titleTextBox.Foreground = SystemColors.ControlLightLightBrush;
                 titleTextBox.Text = "";
             }
         }
@@ -130,7 +154,7 @@ namespace WPFTest
 
             if (descriptionTextBox.Text == hint)
             {
-                descriptionTextBox.Foreground = SystemColors.ActiveCaptionTextBrush;
+                descriptionTextBox.Foreground = SystemColors.ControlLightLightBrush;
                 descriptionTextBox.Text = "";
             }
         }
@@ -147,7 +171,13 @@ namespace WPFTest
 
         private void timeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (e.AddedItems.Count == 0)
+            {
+                timeTextBox.Text = "";
+                return;
+            }
             timeTextBox.Text = (e.AddedItems[0] as ComboBoxItem).Content as string;
+            timeTextBox.Foreground = SystemColors.ControlLightLightBrush;
         }
 
         private TimeSpan ConvertToTime(string timeString)
@@ -202,6 +232,42 @@ namespace WPFTest
         {
             if (e.ChangedButton == MouseButton.Left)
                 this.DragMove();
+        }
+
+        private void deadlineDate_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void TodoGrid_LostFocus(object sender, RoutedEventArgs e)
+        {
+            TodoGrid.SelectedItem = null; 
+        }
+
+        private void timeTextBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (timeTextBox.Text != "") return;
+            timeTextBox.Text = "\x00a0" + "Select a time";
+            timeTextBox.Foreground = SystemColors.GrayTextBrush;
+        }
+
+        private void timeTextBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (timeTextBox.Text != "\x00a0" + "Select a time") return;
+            timeTextBox.Text = "";
+            timeTextBox.Foreground = SystemColors.ControlLightLightBrush;
+        }
+
+        private void deadlineDate_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (deadlineDate.Text != "Select a date") return;
+            deadlineDate.Foreground = SystemColors.GrayTextBrush;
+        }
+
+        private void deadlineDate_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (deadlineDate.Foreground != SystemColors.GrayTextBrush) return;
+            deadlineDate.Foreground = SystemColors.ControlLightLightBrush;
         }
     }
 }

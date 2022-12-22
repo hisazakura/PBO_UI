@@ -15,6 +15,7 @@
                 <Label Content="{Binding Title}" Width="720" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Bahnschrift SemiBold" Padding="0,0,0,0" FontSize="16" Margin="30,0,0,0"/>
             </Grid>
         </DataTemplate>
+        <SolidColorBrush x:Key="DataGridColumnColor" Color="#FFFFC300" />
     </Window.Resources>
     <Grid Background="#FF000814">
         <Grid.RowDefinitions>
@@ -26,32 +27,25 @@
             <ColumnDefinition Width="330"/>
             <ColumnDefinition Width="780"/>
         </Grid.ColumnDefinitions>
-        <Rectangle HorizontalAlignment="Center" Height="546" Stroke="Black" VerticalAlignment="Top" Width="330" Grid.Column="1" Fill="#FF202631" Margin="0,-8,0,0" Grid.RowSpan="2"/>
-        <TextBox Grid.Column="1" HorizontalAlignment="Center" Margin="0,75,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="245" Background="White" BorderBrush="{x:Null}" Height="31" FontSize="16" FontFamily="Segoe UI Semibold" Foreground="#FF343434" TextAlignment="Left" Padding="5,0,2,0" CaretBrush="Gray" VerticalContentAlignment="Center" x:Name="titleTextBox" GotFocus="titleTextBox_GotFocus" LostFocus="titleTextBox_LostFocus">
+        <Rectangle HorizontalAlignment="Center" Height="546" Stroke="Black" VerticalAlignment="Top" Width="330" Grid.Column="1" Fill="#FF001D3D" Margin="0,-8,0,0" Grid.RowSpan="2"/>
+        <TextBox Grid.Column="1" HorizontalAlignment="Center" Margin="0,75,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="245" Background="#FF003566" BorderBrush="{x:Null}" Height="31" FontSize="16" FontFamily="Segoe UI Semibold" Foreground="White" TextAlignment="Left" Padding="5,0,2,0" CaretBrush="Gray" VerticalContentAlignment="Center" x:Name="titleTextBox" GotFocus="titleTextBox_GotFocus" LostFocus="titleTextBox_LostFocus">
             <TextBox.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="3"/>
                 </Style>
             </TextBox.Resources>
         </TextBox>
-        <Label Content="Title" Grid.Column="1" HorizontalAlignment="Left" Margin="42,53,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FFA2A2A2" FontFamily="Bahnschrift SemiBold" Padding="0,0,0,0" FontSize="18"/>
-        <Label Content="Deadline" Grid.Column="1" HorizontalAlignment="Left" Margin="42,133,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FFA2A2A2" FontFamily="Bahnschrift SemiBold" Padding="0,0,0,0" FontSize="18"/>
-        <xctk:DateTimePicker Grid.Column="1" Margin="42,155,44,93" FontSize="16" FontFamily="Segoe UI Semibold" x:Name="deadlineTime" Opacity="0">
-            <xctk:DateTimePicker.Resources>
-                <Style TargetType="{x:Type Border}">
-                    <Setter Property="CornerRadius" Value="10"/>
-                </Style>
-            </xctk:DateTimePicker.Resources>
-        </xctk:DateTimePicker>
-        <TextBox Grid.Column="1" HorizontalAlignment="Left" Margin="41,261,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="245" Background="White" BorderBrush="{x:Null}" Height="157" FontSize="16" FontFamily="Segoe UI Semibold" Foreground="#FF343434" TextAlignment="Left" Padding="5,5,2,0" CaretBrush="Gray" x:Name="descriptionTextBox" GotFocus="descriptionTextBox_GotFocus" LostFocus="descriptionTextBox_LostFocus" Grid.RowSpan="2">
+        <Label Content="Title" Grid.Column="1" HorizontalAlignment="Left" Margin="42,53,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="White" FontFamily="Bahnschrift SemiBold" Padding="0,0,0,0" FontSize="18"/>
+        <Label Content="Deadline" Grid.Column="1" HorizontalAlignment="Left" Margin="42,133,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="White" FontFamily="Bahnschrift SemiBold" Padding="0,0,0,0" FontSize="18"/>
+        <TextBox Grid.Column="1" HorizontalAlignment="Left" Margin="41,261,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="245" Background="#FF003566" BorderBrush="{x:Null}" Height="157" FontSize="16" FontFamily="Segoe UI Semibold" Foreground="#FF343434" TextAlignment="Left" Padding="5,5,2,0" CaretBrush="Gray" x:Name="descriptionTextBox" GotFocus="descriptionTextBox_GotFocus" LostFocus="descriptionTextBox_LostFocus" Grid.RowSpan="2">
             <TextBox.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="3"/>
                 </Style>
             </TextBox.Resources>
         </TextBox>
-        <Label Content="Description" Grid.Column="1" HorizontalAlignment="Left" Margin="42,239,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FFA2A2A2" FontFamily="Bahnschrift SemiBold" Padding="0,0,0,0" FontSize="18"/>
-        <Button Content="Add" Grid.Column="1" HorizontalAlignment="Center" Margin="0,151,0,0" VerticalAlignment="Top" Height="41" Width="246" Background="#FF0096FF" BorderBrush="{x:Null}" Foreground="White" FontFamily="Segoe UI Semibold" FontSize="16" x:Name="addButton" Click="addButton_Click" Grid.Row="1">
+        <Label Content="Description" Grid.Column="1" HorizontalAlignment="Left" Margin="42,239,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="White" FontFamily="Bahnschrift SemiBold" Padding="0,0,0,0" FontSize="18"/>
+        <Button Content="Add" Grid.Column="1" HorizontalAlignment="Center" Margin="0,151,0,0" VerticalAlignment="Top" Height="41" Width="246" Background="#FFFFC300" BorderBrush="{x:Null}" Foreground="White" FontFamily="Segoe UI Semibold" FontSize="16" x:Name="addButton" Click="addButton_Click" Grid.Row="1">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="15"/>
@@ -65,11 +59,13 @@
                 </Style>
             </ListBox.Resources>
         </ListBox>
-        <DataGrid  GridLinesVisibility="None" Grid.Column="2" Margin="30,55,30,30" x:Name="TodoGrid" MaxColumnWidth="300" SelectionChanged="TodoGrid_SelectionChanged" MouseRightButtonUp="TodoGrid_MouseRightButtonUp" AutoGeneratedColumns="TodoGrid_AutoGenerate" Grid.RowSpan="2">
+        <DataGrid LostFocus="TodoGrid_LostFocus" GridLinesVisibility="None" Grid.Column="2" Margin="30,55,30,30" x:Name="TodoGrid" MaxColumnWidth="300" SelectionChanged="TodoGrid_SelectionChanged" MouseRightButtonUp="TodoGrid_MouseRightButtonUp" AutoGeneratedColumns="TodoGrid_AutoGenerate" Grid.RowSpan="2" Background="#FF003566" ColumnHeaderHeight="30" RowHeight="16" HeadersVisibility="Column" Foreground="White" FontFamily="Bahnschrift SemiBold" FontSize="14" VerticalContentAlignment="Center" MinRowHeight="20">
             <Popup Name="DataGridPopup" PopupAnimation="Fade" Placement="Mouse" StaysOpen="False">
                 <Border Width="100" Height="100" Background="AntiqueWhite"></Border>
             </Popup>
             <DataGrid.Resources>
+                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" 
+                   Color="#FFFFFF"/>
                 <Style TargetType="ToolTip">
                     <Setter Property="MaxWidth" Value="500"/>
                     <Setter Property="ContentTemplate">
@@ -89,22 +85,40 @@
             </DataGrid.Resources>
             <DataGrid.CellStyle>
                 <Style TargetType="DataGridCell">
-                    <Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource Self},Path=Content.Text}">
-                    </Setter>
+                    <Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource Self},Path=Content.Text}"/>
+                    <Setter Property="VerticalContentAlignment" Value="Center"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Foreground" Value="White" />
+                            <Setter Property="BorderBrush" Value="White"/>
+                            <Setter Property="BorderThickness" Value="0,1,0,1"/>
+                        </Trigger>
+                    </Style.Triggers>
                 </Style>
             </DataGrid.CellStyle>
             <DataGrid.Columns>
                 <DataGridTemplateColumn Header="Remove" >
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button x:Name="Remove" Content="Remove" Click="Remove_Click" Width="51"/>
+                            <Button x:Name="Remove" Click="Remove_Click" BorderBrush="Transparent" Background="Transparent">
+                                <Image Source="Resources/trashx16.png"/>
+                            </Button>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <DatePicker Grid.Column="1" HorizontalAlignment="Left" Margin="41,155,0,0" VerticalAlignment="Top" Height="31" Width="244" FontSize="16" Name="deadlineDate"/>
-        <ComboBox Grid.Column="1" HorizontalAlignment="Left" Margin="42,186,0,0" VerticalAlignment="Top" Width="243" FontSize="16" Height="31" Name="timeComboBox" SelectionChanged="timeComboBox_SelectionChanged">
+        <DatePicker Grid.Column="1" HorizontalAlignment="Left" Margin="42,155,0,0" VerticalAlignment="Top" Height="31" Width="243" FontSize="16" Name="deadlineDate" Foreground="White" FontFamily="Bahnschrift SemiBold" SelectedDateChanged="deadlineDate_SelectedDateChanged" LostFocus="deadlineDate_LostFocus" GotFocus="deadlineDate_GotFocus" VerticalContentAlignment="Center">
+            <DatePicker.Resources>
+                <Style TargetType="DatePickerTextBox">
+                    <Setter Property="Background" Value="#FF003566" />
+                    <Setter Property="BorderBrush" Value="Transparent" />
+                    <Setter Property="BorderThickness" Value="0" />
+                    <Setter Property="Padding" Value="0,0,0,0"/>
+                </Style>
+            </DatePicker.Resources>
+        </DatePicker>
+        <ComboBox Grid.Column="1" HorizontalAlignment="Left" Margin="42,186,0,0" VerticalAlignment="Top" Width="243" FontSize="16" Height="31" Name="timeComboBox" SelectionChanged="timeComboBox_SelectionChanged" Background="#FF003566" BorderBrush="#FF003566">
             <ComboBoxItem>00:00</ComboBoxItem>
             <ComboBoxItem>00:30</ComboBoxItem>
             <ComboBoxItem>01:00</ComboBoxItem>
@@ -154,7 +168,7 @@
             <ComboBoxItem>23:00</ComboBoxItem>
             <ComboBoxItem>23:30</ComboBoxItem>
         </ComboBox>
-        <TextBox Grid.Column="1" HorizontalAlignment="Left" Margin="42,186,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="226" Height="31" FontSize="16" Name="timeTextBox"/>
+        <TextBox Grid.Column="1" HorizontalAlignment="Left" Margin="42,186,0,99" TextWrapping="Wrap" VerticalContentAlignment="Center" Width="226" Height="31" FontSize="16" Name="timeTextBox" Background="#FF003566" Foreground="White" FontFamily="Bahnschrift SemiBold" LostFocus="timeTextBox_LostFocus" GotFocus="timeTextBox_GotFocus"/>
         <Ellipse x:Name="CloseWind" Grid.Column="2" HorizontalAlignment="Left" Height="15" Margin="735,5,0,0" Stroke="Red" VerticalAlignment="Top" Width="15" Fill="Red" Cursor="Hand" AutomationProperties.Name="CloseWin" MouseLeftButtonUp="closeApp" Panel.ZIndex="1"/>
         <Ellipse x:Name="MinWind" Grid.Column="2" HorizontalAlignment="Left" Height="15" Margin="710,5,0,0" Stroke="Yellow" VerticalAlignment="Top" Width="15" Fill="Yellow" Cursor="Hand" MouseLeftButtonUp="minApp" Panel.ZIndex="1"/>
         <Rectangle Grid.Column="1" HorizontalAlignment="Left" Height="25" Stroke="Black" VerticalAlignment="Top" Width="1110" Grid.ColumnSpan="2" Opacity="100" MouseDown="dragRegion_Drag" Fill="#FF003566"/>
