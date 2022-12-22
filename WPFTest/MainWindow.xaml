@@ -35,8 +35,8 @@
                 </Style>
             </TextBox.Resources>
         </TextBox>
-        <Label Content="Title" Grid.Column="1" HorizontalAlignment="Left" Margin="42,53,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="White" FontFamily="Bahnschrift SemiBold" Padding="0,0,0,0" FontSize="18"/>
-        <Label Content="Deadline" Grid.Column="1" HorizontalAlignment="Left" Margin="42,133,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="White" FontFamily="Bahnschrift SemiBold" Padding="0,0,0,0" FontSize="18"/>
+        <Label Content="Title" Grid.Column="1" HorizontalAlignment="Left" Margin="46,53,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="White" FontFamily="Bahnschrift SemiBold" Padding="0,0,0,0" FontSize="18"/>
+        <Label Content="Deadline" Grid.Column="1" HorizontalAlignment="Left" Margin="45,133,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="White" FontFamily="Bahnschrift SemiBold" Padding="0,0,0,0" FontSize="18"/>
         <TextBox Grid.Column="1" HorizontalAlignment="Left" Margin="41,261,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="245" Background="#FF003566" BorderBrush="{x:Null}" Height="157" FontSize="16" FontFamily="Segoe UI Semibold" Foreground="#FF343434" TextAlignment="Left" Padding="5,5,2,0" CaretBrush="Gray" x:Name="descriptionTextBox" GotFocus="descriptionTextBox_GotFocus" LostFocus="descriptionTextBox_LostFocus" Grid.RowSpan="2">
             <TextBox.Resources>
                 <Style TargetType="{x:Type Border}">
@@ -44,8 +44,8 @@
                 </Style>
             </TextBox.Resources>
         </TextBox>
-        <Label Content="Description" Grid.Column="1" HorizontalAlignment="Left" Margin="42,239,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="White" FontFamily="Bahnschrift SemiBold" Padding="0,0,0,0" FontSize="18"/>
-        <Button Content="Add" Grid.Column="1" HorizontalAlignment="Center" Margin="0,151,0,0" VerticalAlignment="Top" Height="41" Width="246" Background="#FFFFC300" BorderBrush="{x:Null}" Foreground="White" FontFamily="Segoe UI Semibold" FontSize="16" x:Name="addButton" Click="addButton_Click" Grid.Row="1">
+        <Label Content="Description" Grid.Column="1" HorizontalAlignment="Left" Margin="45,239,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="White" FontFamily="Bahnschrift SemiBold" Padding="0,0,0,0" FontSize="18"/>
+        <Button Content="Add" Grid.Column="1" HorizontalAlignment="Center" Margin="0,150,0,0" VerticalAlignment="Top" Height="41" Width="246" Background="#FFFFC300" BorderBrush="{x:Null}" Foreground="White" FontFamily="Segoe UI Semibold" FontSize="16" x:Name="addButton" Click="addButton_Click" Grid.Row="1">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="15"/>
@@ -172,5 +172,10 @@
         <Ellipse x:Name="CloseWind" Grid.Column="2" HorizontalAlignment="Left" Height="15" Margin="735,5,0,0" Stroke="Red" VerticalAlignment="Top" Width="15" Fill="Red" Cursor="Hand" AutomationProperties.Name="CloseWin" MouseLeftButtonUp="closeApp" Panel.ZIndex="1"/>
         <Ellipse x:Name="MinWind" Grid.Column="2" HorizontalAlignment="Left" Height="15" Margin="710,5,0,0" Stroke="Yellow" VerticalAlignment="Top" Width="15" Fill="Yellow" Cursor="Hand" MouseLeftButtonUp="minApp" Panel.ZIndex="1"/>
         <Rectangle Grid.Column="1" HorizontalAlignment="Left" Height="25" Stroke="Black" VerticalAlignment="Top" Width="1110" Grid.ColumnSpan="2" Opacity="100" MouseDown="dragRegion_Drag" Fill="#FF003566"/>
+        <Image Margin="139,231,162,55" Source="/Resources/Order icon.png" Stretch="Fill" Grid.Column="1"/>
+        <Image Margin="81,43,219,242" Source="/Resources/Pencilicon.png" Stretch="Fill" Grid.Column="1"/>
+        <Image Margin="118,126,184,162" Source="/Resources/Alarmclock icon.png" Stretch="Fill" Grid.Column="1"/>
+
     </Grid>
+
 </Window>

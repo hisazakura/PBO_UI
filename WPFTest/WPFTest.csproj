@@ -7,12 +7,24 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\Alarmclock icon.png" />
+    <None Remove="Resources\Order icon.png" />
+    <None Remove="Resources\Pencilicon.png" />
     <None Remove="Resources\trash-347.png" />
     <None Remove="Resources\trash.ico" />
     <None Remove="Resources\trashx16.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="Resources\Alarmclock icon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Order icon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Pencilicon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\trash.ico">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Content>
