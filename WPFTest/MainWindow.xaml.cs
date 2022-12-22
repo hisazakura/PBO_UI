@@ -182,5 +182,26 @@ namespace WPFTest
 
             return new TimeSpan(hour, minute, 0);
         }
+        private void closeApp(object sender, MouseButtonEventArgs e)
+        {
+            try
+            {
+                Close();
+            }
+            catch (Exception)
+            {
+                Trace.WriteLine("Error");
+            }
+        }
+        private void minApp(object sender, MouseButtonEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
+        }
+
+        private void dragRegion_Drag(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+                this.DragMove();
+        }
     }
 }
