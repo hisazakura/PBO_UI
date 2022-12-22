@@ -16,7 +16,7 @@
             </Grid>
         </DataTemplate>
     </Window.Resources>
-    <Grid Background="#FF0C0F14">
+    <Grid Background="#FF000814">
         <Grid.RowDefinitions>
             <RowDefinition Height="307*"/>
             <RowDefinition Height="215*"/>
