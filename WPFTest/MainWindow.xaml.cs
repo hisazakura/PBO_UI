@@ -101,7 +101,7 @@ namespace WPFTest
         private void TodoGrid_AutoGenerate(object sender, EventArgs e)
         {
             DataGrid grid = (DataGrid)sender;
-            foreach (var item in grid.Columns)
+            foreach (var item in grid.Columns.ToList())
             {
                 item.HeaderStyle = new Style(typeof(DataGridColumnHeader));
                 item.HeaderStyle.Setters.Add(new Setter(DataGridColumnHeader.HorizontalContentAlignmentProperty, HorizontalAlignment.Center));
@@ -112,11 +112,19 @@ namespace WPFTest
 
                 switch (item.Header.ToString())
                 {
+                    case "Checkbox":
+                        item.Header = "";
+                        break;
                     case "Title":
                         item.MinWidth = 170;
+                        item.MaxWidth = 170;
                         break;
                     case "Deadline":
                         item.MinWidth = 155;
+                        break;
+                    case "Description":
+                        item.MinWidth = 300;
+                        item.MaxWidth = 300;
                         break;
                     case "Remove":
                         item.DisplayIndex = grid.Columns.Count - 1;
@@ -125,6 +133,9 @@ namespace WPFTest
                     case "Completed":
                         item.Header = "";
                         item.MaxWidth = 20;
+                        break;
+                    case "Id":
+                        TodoGrid.Columns.Remove(item);
                         break;
                 }
             }
