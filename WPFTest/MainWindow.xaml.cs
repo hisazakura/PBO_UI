@@ -287,11 +287,20 @@ namespace WPFTest
 
         private void TodoGrid_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
         {
-            string modified = (e.EditingElement as TextBox).Text;
             Todo item = (Todo)e.Row.Item;
-            item = EditField(item, e.Column.Header.ToString(), modified);
-            Trace.Write(item.ToString());
+            string column = e.Column.Header.ToString();
+            if (column == "")
+            {
+                bool modified = (e.EditingElement as CheckBox).IsChecked?? false;
+                item = EditField(item, "Checkbox", modified);
+            }
+            else
+            {
+                string modified = (e.EditingElement as TextBox).Text;
+                item = EditField(item, e.Column.Header.ToString(), modified);
+            }
             Todo.Savedata(item);
+
 
         }
 
@@ -304,6 +313,9 @@ namespace WPFTest
                     break;
                 case "Description":
                     todo.Description = (string)value;
+                    break;
+                case "Checkbox":
+                    todo.Checkbox = (bool)value; 
                     break;
             }
             return todo;
