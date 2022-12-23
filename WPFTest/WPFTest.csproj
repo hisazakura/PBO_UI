@@ -8,6 +8,10 @@
 
   <ItemGroup>
     <None Remove="Resources\Alarmclock icon.png" />
+    <None Remove="Resources\Close button.jpg" />
+    <None Remove="Resources\LOGO DID.png" />
+    <None Remove="Resources\minimize button.jpg" />
+    <None Remove="Resources\notebook.png" />
     <None Remove="Resources\Order icon.png" />
     <None Remove="Resources\Pencilicon.png" />
     <None Remove="Resources\trash-347.png" />
@@ -17,6 +21,18 @@
 
   <ItemGroup>
     <Content Include="Resources\Alarmclock icon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Close button.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\LOGO DID.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\minimize button.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\notebook.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Order icon.png">

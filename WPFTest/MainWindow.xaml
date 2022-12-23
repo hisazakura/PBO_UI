@@ -28,31 +28,31 @@
             <ColumnDefinition Width="780"/>
         </Grid.ColumnDefinitions>
         <Rectangle HorizontalAlignment="Center" Height="546" Stroke="Black" VerticalAlignment="Top" Width="330" Grid.Column="1" Fill="#FF001D3D" Margin="0,-8,0,0" Grid.RowSpan="2"/>
-        <TextBox Grid.Column="1" HorizontalAlignment="Center" Margin="0,75,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="245" Background="#FF003566" BorderBrush="{x:Null}" Height="31" FontSize="16" FontFamily="Segoe UI Semibold" Foreground="White" TextAlignment="Left" Padding="5,0,2,0" CaretBrush="Gray" VerticalContentAlignment="Center" x:Name="titleTextBox" GotFocus="titleTextBox_GotFocus" LostFocus="titleTextBox_LostFocus">
+        <TextBox Grid.Column="1" HorizontalAlignment="Center" Margin="0,129,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="246" Background="#FF003566" BorderBrush="{x:Null}" Height="31" FontSize="16" FontFamily="Segoe UI Semibold" Foreground="White" TextAlignment="Left" Padding="5,0,2,0" CaretBrush="Gray" VerticalContentAlignment="Center" x:Name="titleTextBox" GotFocus="titleTextBox_GotFocus" LostFocus="titleTextBox_LostFocus">
             <TextBox.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="3"/>
                 </Style>
             </TextBox.Resources>
         </TextBox>
-        <Label Content="Title" Grid.Column="1" HorizontalAlignment="Left" Margin="46,53,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="White" FontFamily="Bahnschrift SemiBold" Padding="0,0,0,0" FontSize="18"/>
-        <Label Content="Deadline" Grid.Column="1" HorizontalAlignment="Left" Margin="45,133,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="White" FontFamily="Bahnschrift SemiBold" Padding="0,0,0,0" FontSize="18"/>
-        <TextBox Grid.Column="1" HorizontalAlignment="Left" Margin="41,261,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="245" Background="#FF003566" BorderBrush="{x:Null}" Height="157" FontSize="16" FontFamily="Segoe UI Semibold" Foreground="#FF343434" TextAlignment="Left" Padding="5,5,2,0" CaretBrush="Gray" x:Name="descriptionTextBox" GotFocus="descriptionTextBox_GotFocus" LostFocus="descriptionTextBox_LostFocus" Grid.RowSpan="2">
+        <Label Content="Title" Grid.Column="1" HorizontalAlignment="Left" Margin="46,107,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="White" FontFamily="Bahnschrift SemiBold" Padding="0,0,0,0" FontSize="18"/>
+        <Label Content="Deadline" Grid.Column="1" HorizontalAlignment="Left" Margin="46,180,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="White" FontFamily="Bahnschrift SemiBold" Padding="0,0,0,0" FontSize="18"/>
+        <TextBox Grid.Column="1" HorizontalAlignment="Left" Margin="41,311,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="245" Background="#FF003566" BorderBrush="{x:Null}" Height="157" FontSize="16" FontFamily="Segoe UI Semibold" Foreground="#FF343434" TextAlignment="Left" Padding="5,5,2,0" CaretBrush="Gray" x:Name="descriptionTextBox" GotFocus="descriptionTextBox_GotFocus" LostFocus="descriptionTextBox_LostFocus" Grid.RowSpan="2">
             <TextBox.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="3"/>
                 </Style>
             </TextBox.Resources>
         </TextBox>
-        <Label Content="Description" Grid.Column="1" HorizontalAlignment="Left" Margin="45,239,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="White" FontFamily="Bahnschrift SemiBold" Padding="0,0,0,0" FontSize="18"/>
-        <Button Content="Add" Grid.Column="1" HorizontalAlignment="Center" Margin="0,150,0,0" VerticalAlignment="Top" Height="41" Width="246" Background="#FFFFC300" BorderBrush="{x:Null}" Foreground="White" FontFamily="Segoe UI Semibold" FontSize="16" x:Name="addButton" Click="addButton_Click" Grid.Row="1">
+        <Label Content="Description" Grid.Column="1" HorizontalAlignment="Left" Margin="45,289,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="White" FontFamily="Bahnschrift SemiBold" Padding="0,0,0,0" FontSize="18"/>
+        <Button Content="Add" Grid.Column="1" HorizontalAlignment="Left" Margin="40,165,0,0" VerticalAlignment="Top" Height="41" Width="246" Background="#FFFFC300" BorderBrush="{x:Null}" Foreground="White" FontFamily="Segoe UI Semibold" FontSize="16" x:Name="addButton" Click="addButton_Click" Grid.Row="1">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="15"/>
                 </Style>
             </Button.Resources>
         </Button>
-        <ListBox Grid.Column="2" Margin="30,30,30,30" x:Name="todoList" SelectionChanged="todoList_SelectionChanged" ItemTemplate="{DynamicResource TodoTemplate}" Opacity="0" Grid.RowSpan="2">
+        <ListBox Grid.Column="2" Margin="28,-34,32,94" x:Name="todoList" SelectionChanged="todoList_SelectionChanged" ItemTemplate="{DynamicResource TodoTemplate}" Opacity="0" Grid.RowSpan="2">
             <ListBox.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="3"/>
@@ -108,7 +108,7 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <DatePicker Grid.Column="1" HorizontalAlignment="Left" Margin="42,155,0,0" VerticalAlignment="Top" Height="31" Width="243" FontSize="16" Name="deadlineDate" Foreground="White" FontFamily="Bahnschrift SemiBold" SelectedDateChanged="deadlineDate_SelectedDateChanged" LostFocus="deadlineDate_LostFocus" GotFocus="deadlineDate_GotFocus" VerticalContentAlignment="Center">
+        <DatePicker Grid.Column="1" HorizontalAlignment="Left" Margin="42,203,0,0" VerticalAlignment="Top" Height="31" Width="243" FontSize="16" Name="deadlineDate" Foreground="White" FontFamily="Bahnschrift SemiBold" SelectedDateChanged="deadlineDate_SelectedDateChanged" LostFocus="deadlineDate_LostFocus" GotFocus="deadlineDate_GotFocus" VerticalContentAlignment="Center">
             <DatePicker.Resources>
                 <Style TargetType="DatePickerTextBox">
                     <Setter Property="Background" Value="#FF003566" />
@@ -118,7 +118,7 @@
                 </Style>
             </DatePicker.Resources>
         </DatePicker>
-        <ComboBox Grid.Column="1" HorizontalAlignment="Left" Margin="42,186,0,0" VerticalAlignment="Top" Width="243" FontSize="16" Height="31" Name="timeComboBox" SelectionChanged="timeComboBox_SelectionChanged" Background="#FF003566" BorderBrush="#FF003566">
+        <ComboBox Grid.Column="1" HorizontalAlignment="Left" Margin="42,234,0,0" VerticalAlignment="Top" Width="243" FontSize="16" Height="31" Name="timeComboBox" SelectionChanged="timeComboBox_SelectionChanged" Background="#FF003566" BorderBrush="#FF003566">
             <ComboBoxItem>00:00</ComboBoxItem>
             <ComboBoxItem>00:30</ComboBoxItem>
             <ComboBoxItem>01:00</ComboBoxItem>
@@ -168,13 +168,20 @@
             <ComboBoxItem>23:00</ComboBoxItem>
             <ComboBoxItem>23:30</ComboBoxItem>
         </ComboBox>
-        <TextBox Grid.Column="1" HorizontalAlignment="Left" Margin="42,186,0,99" TextWrapping="Wrap" VerticalContentAlignment="Center" Width="226" Height="31" FontSize="16" Name="timeTextBox" Background="#FF003566" Foreground="White" FontFamily="Bahnschrift SemiBold" LostFocus="timeTextBox_LostFocus" GotFocus="timeTextBox_GotFocus"/>
-        <Ellipse x:Name="CloseWind" Grid.Column="2" HorizontalAlignment="Left" Height="15" Margin="735,5,0,0" Stroke="Red" VerticalAlignment="Top" Width="15" Fill="Red" Cursor="Hand" AutomationProperties.Name="CloseWin" MouseLeftButtonUp="closeApp" Panel.ZIndex="1"/>
-        <Ellipse x:Name="MinWind" Grid.Column="2" HorizontalAlignment="Left" Height="15" Margin="710,5,0,0" Stroke="Yellow" VerticalAlignment="Top" Width="15" Fill="Yellow" Cursor="Hand" MouseLeftButtonUp="minApp" Panel.ZIndex="1"/>
+        <TextBox Grid.Column="1" HorizontalAlignment="Left" Margin="42,234,0,51" TextWrapping="Wrap" VerticalContentAlignment="Center" Width="226" Height="31" FontSize="16" Name="timeTextBox" Background="#FF003566" Foreground="White" FontFamily="Bahnschrift SemiBold" LostFocus="timeTextBox_LostFocus" GotFocus="timeTextBox_GotFocus"/>
+
+        <Image Grid.Column="2" Margin="746,-27,12,321" Source="/Resources/Close button.jpg" Stretch="Fill"/>
+        <Ellipse x:Name="CloseWind" Grid.Column="2" HorizontalAlignment="Left" Height="15" Margin="735,5,0,0" Stroke="Red" VerticalAlignment="Top" Width="15" Fill="Red" Cursor="Hand" AutomationProperties.Name="CloseWin" MouseLeftButtonUp="closeApp" Panel.ZIndex="1" ToolTip="Close"/>
+        <Ellipse x:Name="MinWind" Grid.Column="2" HorizontalAlignment="Left" Height="15" Margin="710,5,0,0" Stroke="Yellow" VerticalAlignment="Top" Width="15" Fill="Yellow" Cursor="Hand" MouseLeftButtonUp="minApp" Panel.ZIndex="1" ToolTip="Minimize"/>
+
+
         <Rectangle Grid.Column="1" HorizontalAlignment="Left" Height="25" Stroke="Black" VerticalAlignment="Top" Width="1110" Grid.ColumnSpan="2" Opacity="100" MouseDown="dragRegion_Drag" Fill="#FF003566"/>
-        <Image Margin="139,231,162,55" Source="/Resources/Order icon.png" Stretch="Fill" Grid.Column="1"/>
-        <Image Margin="81,43,219,242" Source="/Resources/Pencilicon.png" Stretch="Fill" Grid.Column="1"/>
-        <Image Margin="118,126,184,162" Source="/Resources/Alarmclock icon.png" Stretch="Fill" Grid.Column="1"/>
+        <Image Margin="139,281,162,5" Source="/Resources/Order icon.png" Stretch="Fill" Grid.Column="1"/>
+        <Image Margin="118,174,184,114" Source="/Resources/Alarmclock icon.png" Stretch="Fill" Grid.Column="1"/>
+        <Image Margin="29,30,199,232" Source="/Resources/LOGO DID.png" Stretch="Fill" Grid.Column="1"/>
+        <Image Margin="80,102,225,189" Source="/Resources/notebook.png" Stretch="Fill" Grid.Column="1"/>
+        <Rectangle Fill="Red" Grid.Column="2" HorizontalAlignment="Left" Height="16" Margin="725,-19,0,0" Stroke="Black" VerticalAlignment="Top" Width="16"/>
+
 
     </Grid>
 
