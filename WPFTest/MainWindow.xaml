@@ -192,9 +192,9 @@
         <Rectangle Grid.Column="1" HorizontalAlignment="Left" Height="25" Stroke="Black" VerticalAlignment="Top" Width="1110" Grid.ColumnSpan="2" Opacity="100" MouseDown="dragRegion_Drag" Fill="#FF003566"/>
         <Image Margin="139,281,162,5" Source="/Resources/Order icon.png" Stretch="Fill" Grid.Column="1"/>
         <Image Margin="118,174,184,114" Source="/Resources/Alarmclock icon.png" Stretch="Fill" Grid.Column="1"/>
-        <Image Margin="29,30,199,232" Source="/Resources/LOGO DID.png" Stretch="Fill" Grid.Column="1"/>
         <Image Margin="80,102,225,189" Source="/Resources/notebook.png" Stretch="Fill" Grid.Column="1"/>
         <Rectangle Fill="Red" Grid.Column="2" HorizontalAlignment="Left" Height="16" Margin="725,-19,0,0" Stroke="Black" VerticalAlignment="Top" Width="16"/>
+        <Image Margin="34,27,113,223" Source="/Resources/LOGO DID2.png" Stretch="Fill" Grid.Column="1"/>
 
 
     </Grid>
