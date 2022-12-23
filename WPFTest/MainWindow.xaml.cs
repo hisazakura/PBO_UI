@@ -16,6 +16,7 @@ using System.Windows.Shapes;
 using System.Collections.ObjectModel;
 using System.Windows.Controls.Primitives;
 using System.Security.Cryptography;
+using System.Text.Json.Nodes;
 
 namespace WPFTest
 {
@@ -282,6 +283,30 @@ namespace WPFTest
         {
             if (deadlineDate.Foreground != SystemColors.GrayTextBrush) return;
             deadlineDate.Foreground = SystemColors.ControlLightLightBrush;
+        }
+
+        private void TodoGrid_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
+        {
+            string modified = (e.EditingElement as TextBox).Text;
+            Todo item = (Todo)e.Row.Item;
+            item = EditField(item, e.Column.Header.ToString(), modified);
+            Trace.Write(item.ToString());
+            Todo.Savedata(item);
+
+        }
+
+        private Todo EditField(Todo todo, string field, object value)
+        {
+            switch (field)
+            {
+                case "Title":
+                    todo.Title = (string)value;
+                    break;
+                case "Description":
+                    todo.Description = (string)value;
+                    break;
+            }
+            return todo;
         }
     }
 }

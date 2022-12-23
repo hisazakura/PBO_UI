@@ -2,6 +2,7 @@
 using RestSharp;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 
 namespace WPFTest
@@ -58,6 +59,24 @@ namespace WPFTest
 
             request.AddHeader("Content-Type", "application/json");
 
+        }
+        public static void  Savedata(Todo Mission)
+        {
+            string conn = $"https://localhost:7043/api/Mission/{Mission.Id}";
+
+            var client = new RestClient(conn);
+            var request = new RestRequest(conn, Method.Put);
+     
+
+            request.AddHeader("Content-Type", "application/json");
+            request.AddHeader("Accept", "application/xml");
+            request.AddJsonBody(Mission);
+            var response = client.Execute(request);
+
+        }
+        override public string ToString()
+        {
+            return this.Id.ToString() + "\n" + this.Title.ToString() + "\n" + this.Deadline.ToString() + "\n" + this.Description.ToString() + "\n" + this.Checkbox.ToString();
         }
     }
 
