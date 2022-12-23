@@ -171,16 +171,30 @@
         <TextBox Grid.Column="1" HorizontalAlignment="Left" Margin="42,234,0,51" TextWrapping="Wrap" VerticalContentAlignment="Center" Width="226" Height="31" FontSize="16" Name="timeTextBox" Background="#FF003566" Foreground="White" FontFamily="Bahnschrift SemiBold" LostFocus="timeTextBox_LostFocus" GotFocus="timeTextBox_GotFocus"/>
 
         <Image Grid.Column="2" Margin="746,-27,12,321" Source="/Resources/Close button.jpg" Stretch="Fill"/>
-        <Ellipse x:Name="CloseWind" Grid.Column="2" HorizontalAlignment="Left" Height="15" Margin="735,5,0,0" Stroke="Red" VerticalAlignment="Top" Width="15" Fill="Red" Cursor="Hand" AutomationProperties.Name="CloseWin" MouseLeftButtonUp="closeApp" Panel.ZIndex="1" ToolTip="Close"/>
-        <Ellipse x:Name="MinWind" Grid.Column="2" HorizontalAlignment="Left" Height="15" Margin="710,5,0,0" Stroke="Yellow" VerticalAlignment="Top" Width="15" Fill="Yellow" Cursor="Hand" MouseLeftButtonUp="minApp" Panel.ZIndex="1" ToolTip="Minimize"/>
+        <Ellipse x:Name="CloseWind" Grid.Column="2" HorizontalAlignment="Left" Height="15" Margin="735,5,0,0" Stroke="Red" VerticalAlignment="Top" Width="15" Cursor="Hand" AutomationProperties.Name="CloseWin" MouseLeftButtonUp="closeApp" Panel.ZIndex="10" ToolTip="Close">
+            <Ellipse.Fill>
+                <ImageBrush ImageSource="Resources/Close button.jpg" Stretch="Uniform"/>
+            </Ellipse.Fill>
+        </Ellipse>
+        <Ellipse Grid.Column="2" HorizontalAlignment="Left" Height="15" Margin="735,5,0,0" Stroke="Red" VerticalAlignment="Top" Width="15" Fill="Red" Cursor="Hand" AutomationProperties.Name="CloseWin" MouseLeftButtonUp="closeApp" Panel.ZIndex="5" ToolTip="Close"/>
+        <Ellipse x:Name="MinWind" Grid.Column="2" HorizontalAlignment="Left" Height="15" Margin="710,5,0,0" Stroke="Yellow" VerticalAlignment="Top" Width="15" Cursor="Hand" MouseLeftButtonUp="minApp" Panel.ZIndex="10" ToolTip="Minimize">
+            <Ellipse.Fill>
+                <ImageBrush ImageSource="Resources/minimize button.jpg" Stretch="Uniform">
+                    <ImageBrush.Transform>
+                        <ScaleTransform ScaleY="0.7" CenterY="8"/>
+                    </ImageBrush.Transform>
+                </ImageBrush>
+            </Ellipse.Fill>
+        </Ellipse>
+        <Ellipse Grid.Column="2" HorizontalAlignment="Left" Height="15" Margin="710,5,0,0" Stroke="Yellow" VerticalAlignment="Top" Width="15" Fill="Yellow" Cursor="Hand" MouseLeftButtonUp="minApp" Panel.ZIndex="5" ToolTip="Minimize"/>
 
 
         <Rectangle Grid.Column="1" HorizontalAlignment="Left" Height="25" Stroke="Black" VerticalAlignment="Top" Width="1110" Grid.ColumnSpan="2" Opacity="100" MouseDown="dragRegion_Drag" Fill="#FF003566"/>
         <Image Margin="139,281,162,5" Source="/Resources/Order icon.png" Stretch="Fill" Grid.Column="1"/>
         <Image Margin="118,174,184,114" Source="/Resources/Alarmclock icon.png" Stretch="Fill" Grid.Column="1"/>
-        <Image Margin="29,30,199,232" Source="/Resources/LOGO DID.png" Stretch="Fill" Grid.Column="1"/>
         <Image Margin="80,102,225,189" Source="/Resources/notebook.png" Stretch="Fill" Grid.Column="1"/>
         <Rectangle Fill="Red" Grid.Column="2" HorizontalAlignment="Left" Height="16" Margin="725,-19,0,0" Stroke="Black" VerticalAlignment="Top" Width="16"/>
+        <Image Margin="34,27,113,223" Source="/Resources/LOGO DID2.png" Stretch="Fill" Grid.Column="1"/>
 
 
     </Grid>
