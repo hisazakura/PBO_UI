@@ -16,6 +16,7 @@ using System.Windows.Shapes;
 using System.Collections.ObjectModel;
 using System.Windows.Controls.Primitives;
 using System.Security.Cryptography;
+using System.Text.Json.Nodes;
 
 namespace WPFTest
 {
@@ -24,7 +25,7 @@ namespace WPFTest
     /// </summary>
     public partial class MainWindow : Window
     {
-        ObservableCollection<Todo> TodoItems = new ObservableCollection<Todo>(Todo.LoadMockData());
+        ObservableCollection<Todo> TodoItems = new ObservableCollection<Todo>(Todo.GetAllMission());
         public MainWindow()
         {
             InitializeComponent();
@@ -48,6 +49,7 @@ namespace WPFTest
 
         private void addButton_Click(object sender, RoutedEventArgs e)
         {
+
             if (deadlineDate.SelectedDate == null) return;
             if (titleTextBox.Text == "\x00a0" + "Title") return;
             if (descriptionTextBox.Text == "\x00a0" + "Description") return;
@@ -64,6 +66,7 @@ namespace WPFTest
             DateTime deadline = date + time;
 
             Todo todo = new Todo(titleTextBox.Text, deadline, descriptionTextBox.Text);
+            Todo.Postdata(todo);
             TodoItems.Add(todo);
             ResetInput();
 
@@ -93,12 +96,13 @@ namespace WPFTest
         private void Remove_Click(object sender, RoutedEventArgs e)
         {
             Todo todo = ((FrameworkElement)sender).DataContext as Todo;
+            Todo.Deletedata(todo.Id);
             TodoItems.Remove(todo);
         }
         private void TodoGrid_AutoGenerate(object sender, EventArgs e)
         {
             DataGrid grid = (DataGrid)sender;
-            foreach (var item in grid.Columns)
+            foreach (var item in grid.Columns.ToList())
             {
                 item.HeaderStyle = new Style(typeof(DataGridColumnHeader));
                 item.HeaderStyle.Setters.Add(new Setter(DataGridColumnHeader.HorizontalContentAlignmentProperty, HorizontalAlignment.Center));
@@ -109,11 +113,19 @@ namespace WPFTest
 
                 switch (item.Header.ToString())
                 {
+                    case "Checkbox":
+                        item.Header = "";
+                        break;
                     case "Title":
                         item.MinWidth = 170;
+                        item.MaxWidth = 170;
                         break;
                     case "Deadline":
                         item.MinWidth = 155;
+                        break;
+                    case "Description":
+                        item.MinWidth = 300;
+                        item.MaxWidth = 300;
                         break;
                     case "Remove":
                         item.DisplayIndex = grid.Columns.Count - 1;
@@ -122,6 +134,9 @@ namespace WPFTest
                     case "Completed":
                         item.Header = "";
                         item.MaxWidth = 20;
+                        break;
+                    case "Id":
+                        TodoGrid.Columns.Remove(item);
                         break;
                 }
             }
@@ -268,6 +283,30 @@ namespace WPFTest
         {
             if (deadlineDate.Foreground != SystemColors.GrayTextBrush) return;
             deadlineDate.Foreground = SystemColors.ControlLightLightBrush;
+        }
+
+        private void TodoGrid_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
+        {
+            string modified = (e.EditingElement as TextBox).Text;
+            Todo item = (Todo)e.Row.Item;
+            item = EditField(item, e.Column.Header.ToString(), modified);
+            Trace.Write(item.ToString());
+            Todo.Savedata(item);
+
+        }
+
+        private Todo EditField(Todo todo, string field, object value)
+        {
+            switch (field)
+            {
+                case "Title":
+                    todo.Title = (string)value;
+                    break;
+                case "Description":
+                    todo.Description = (string)value;
+                    break;
+            }
+            return todo;
         }
     }
 }
