@@ -15,13 +15,12 @@ namespace WPFTest
         public DateTime Deadline { get; set; }
         public string Description { get; set; }
 
-
         public Todo(string Title, DateTime Deadline, string Description)
         {
             this.Title = Title;
             this.Deadline = Deadline;
             this.Description = Description;
-        }
+        } 
         public static List<Todo> GetAllMission()
         {
             string conn = "https://localhost:7043/api/Mission";
