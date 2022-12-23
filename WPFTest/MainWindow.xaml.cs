@@ -24,7 +24,7 @@ namespace WPFTest
     /// </summary>
     public partial class MainWindow : Window
     {
-        ObservableCollection<Todo> TodoItems = new ObservableCollection<Todo>(Todo.LoadMockData());
+        ObservableCollection<Todo> TodoItems = new ObservableCollection<Todo>(Todo.GetAllMission());
         public MainWindow()
         {
             InitializeComponent();
@@ -48,6 +48,7 @@ namespace WPFTest
 
         private void addButton_Click(object sender, RoutedEventArgs e)
         {
+
             if (deadlineDate.SelectedDate == null) return;
             if (titleTextBox.Text == "\x00a0" + "Title") return;
             if (descriptionTextBox.Text == "\x00a0" + "Description") return;
@@ -64,6 +65,7 @@ namespace WPFTest
             DateTime deadline = date + time;
 
             Todo todo = new Todo(titleTextBox.Text, deadline, descriptionTextBox.Text);
+            Todo.Postdata(todo);
             TodoItems.Add(todo);
             ResetInput();
 
@@ -93,6 +95,7 @@ namespace WPFTest
         private void Remove_Click(object sender, RoutedEventArgs e)
         {
             Todo todo = ((FrameworkElement)sender).DataContext as Todo;
+            Todo.Deletedata(todo.Id);
             TodoItems.Remove(todo);
         }
         private void TodoGrid_AutoGenerate(object sender, EventArgs e)
